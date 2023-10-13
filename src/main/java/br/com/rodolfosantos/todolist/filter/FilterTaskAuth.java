@@ -12,10 +12,12 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Base64;
+import java.util.UUID;
 
 @Component
 public class FilterTaskAuth extends OncePerRequestFilter {
 
+    private UUID uderId;
     private String username;
     private String password;
     private final String[] allowedPaths = new String[]{"/users/"};
@@ -32,6 +34,7 @@ public class FilterTaskAuth extends OncePerRequestFilter {
 
         this.setUsernameAndPassword(request.getHeader("Authorization"));
         this.validateUserOrSendError(response);
+        request.setAttribute("userId", this.uderId);
 
         filterChain.doFilter(request, response);
     }
@@ -47,6 +50,8 @@ public class FilterTaskAuth extends OncePerRequestFilter {
         if (!passwordVerify.verified) {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Invalid password");
         }
+
+        this.uderId = user.getId();
     }
 
     private void setUsernameAndPassword(String auth) {
