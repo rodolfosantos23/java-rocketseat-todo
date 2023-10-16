@@ -1,12 +1,10 @@
 package br.com.rodolfosantos.todolist.task;
 
 import br.com.rodolfosantos.todolist.Utils;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.config.Task;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;

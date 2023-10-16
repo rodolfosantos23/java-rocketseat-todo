@@ -1,7 +1,6 @@
 package br.com.rodolfosantos.todolist;
 
 import java.util.HashSet;
-import java.util.Properties;
 import java.util.Set;
 
 import org.springframework.beans.BeanUtils;

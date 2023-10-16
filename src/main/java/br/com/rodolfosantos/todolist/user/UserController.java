@@ -20,7 +20,7 @@ public class UserController {
     public ResponseEntity create(@RequestBody UserModel userModel) {
         var user = this.userRepository.findByUsername(userModel.getUsername());
         if (user != null) {
-            return ResponseEntity.badRequest().body("User already exists");
+            return ResponseEntity.badRequest().body("User already exists!");
         }
 
         var hashedPassword = BCrypt.withDefaults().hashToString(12, userModel.getPassword().toCharArray());
